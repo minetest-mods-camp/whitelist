@@ -1,0 +1,18 @@
+# version 1.0.0
+# author(s): Zughy
+# reviewer(s):
+# textdomain: whitelist
+
+# api.lua
+[!] The whitelist is already enabled!=[!] La whitelist è già abilitata!
+Whitelist successfully enabled=Whitelist abilitata con successo
+[!] The whitelist is already disabled!=[!] La whitelist è già disabilitata!
+Whitelist successfully disabled=Whitelist disabilitata con successo
+[!] @1 is already whitelisted!=[!] @1 è già nella whitelist!
+[!] There is no player whitelisted with that name...=[!] Nessun giocatore con quel nome è presente nella whitelist...
+[!] You can't remove yourself!=[!] Non puoi rimuovere te stesso/a!
+[!] Whitelist can't be empty when enabled!=[!] La whitelist non può essere vuota quand'è attiva!
+Whitelisted players: =Giocatori in whitelist: 
+
+#player_manager.lua
+You're not whitelisted!=Non sei in whitelist!
