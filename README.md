@@ -6,8 +6,8 @@ Filter who can enter a Minetest server and who can't through a whitelist
 ### Commands
 `/whitelist on`: enables the whitelist  
 `/whitelist off`: disables the whitelist  
-`/whitelist add <player>`: adds <player> to the whitelist  
-`/whitelist remove <player>`: removes <player> from the whitelist  
+`/whitelist add <player>`: adds <player> to the whitelist (not case sensitive)  
+`/whitelist remove <player>`: removes <player> from the whitelist (not case sensitive)  
 `/whitelist who`: lists all the whitelisted players
 
 ### API

@@ -6,7 +6,6 @@ local storage = minetest.get_mod_storage()
 
 
 
-
 ----------------------------------------------
 ---------------DICHIARAZIONI------------------
 ----------------------------------------------
@@ -27,7 +26,7 @@ end
 
 
 ----------------------------------------------
---------------------CORE----------------------
+-------------------CORPO----------------------
 ----------------------------------------------
 
 function whitelist.enable(sender)
@@ -69,7 +68,7 @@ function whitelist.add_player(p_name, sender)
   sender = sender or ""
 
   -- se già c'è
-  if whitelisted_players[p_name] then
+  if whitelist.is_player_whitelisted(p_name) then
     minetest.chat_send_player(sender, minetest.colorize("#e6482e", S("[!] @1 is already whitelisted!", p_name)))
     return end
 
@@ -83,9 +82,10 @@ end
 function whitelist.remove_player(p_name, sender)
 
   sender = sender or ""
+  local is_whitelisted, wl_name = whitelist.is_player_whitelisted(p_name)
 
   -- se già non c'è
-  if not whitelisted_players[p_name] then
+  if not is_whitelisted then
     minetest.chat_send_player(sender, minetest.colorize("#e6482e", S("[!] There is no player whitelisted with that name...")))
     return end
 
@@ -94,16 +94,16 @@ function whitelist.remove_player(p_name, sender)
     minetest.chat_send_player(sender, minetest.colorize("#e6482e", S("[!] You can't remove yourself!")))
     return end
 
-  whitelisted_players[p_name] = nil
+  whitelisted_players[wl_name] = nil
 
   -- se si rimuove l'ultimo giocatore mentre è attiva
   if not next(whitelisted_players) and is_whitelist_on then
     minetest.chat_send_player(sender, minetest.colorize("#e6482e", S("[!] Whitelist can't be empty when enabled!")))
-    whitelisted_players[p_name] = true
+    whitelisted_players[wl_name] = true
     return end
 
   storage:set_string("PLAYERS", minetest.serialize(whitelisted_players))
-  minetest.chat_send_player(sender, "[WHITELIST] " .. minetest.colorize("#f16a54", "- " .. p_name))
+  minetest.chat_send_player(sender, "[WHITELIST] " .. minetest.colorize("#f16a54", "- " .. wl_name))
 end
 
 
@@ -126,8 +126,14 @@ end
 
 
 
-function whitelist.is_player_whitelisted(p_name)
-  return whitelisted_players[p_name] ~= nil
+function whitelist.is_player_whitelisted(p_name)      -- no case sensitive
+  local p_name_lower = p_name:lower()
+  for name, _ in pairs(whitelisted_players) do
+    if name:lower() == p_name_lower then
+      return true, name
+    end
+  end
+  return false
 end
 
 

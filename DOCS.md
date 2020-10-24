@@ -11,12 +11,12 @@ Whitelisted players and whitelist status are both saved into the mod storage, an
 
 * `whitelist.enable(<sender>)`: enables the whitelist
 * `whitelist.disable(<sender>)`: disables the whitelist
-* `whitelist.add_player(p_name, <sender>)`: adds `p_name` to the whitelist
-* `whitelist.remove_player(p_name, <sender>)`: removes `p_name` from the whitelist
+* `whitelist.add_player(p_name, <sender>)`: adds `p_name` to the whitelist (not case sensitive)
+* `whitelist.remove_player(p_name, <sender>)`: removes `p_name` from the whitelist (not case sensitive)
 
 ### 2.2 Utils
 * `whitelist.print_list(sender)`: prints a message to `sender` containing all the whitelisted players
-* `whitelist.is_player_whitelisted(p_name)`: returns whether `p_name` is whitelisted, as a boolean
+* `whitelist.is_player_whitelisted(p_name)`: returns whether `p_name` is whitelisted, as a boolean. If true, it also returns the name as it appears in the whitelist (as it's not case sensitive)
 * `whitelist.is_whitelist_enabled()`: returns whether the whitelist is enabled, as a boolean
 
 ## 3. About the author
