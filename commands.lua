@@ -1,3 +1,5 @@
+local S = minetest.get_translator("whitelist")
+
 ChatCmdBuilder.new("whitelist", function(cmd)
 
   cmd:sub("off", function(sender)
@@ -21,6 +23,7 @@ ChatCmdBuilder.new("whitelist", function(cmd)
       end)
 
 end, {
-  description = "whitelist commands",
+  description = S("Whitelist commands. <player> is only needed for 'add' and 'remove'"),
+  params = "<off | on | who | add | remove> [<" .. S("player") .. ">]",
   privs = { server = true }
 })

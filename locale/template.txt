@@ -1,4 +1,4 @@
-# version 1.1.1
+# version 1.2.0
 # author(s):
 # reviewer(s):
 # textdomain: whitelist
@@ -13,6 +13,10 @@ Whitelist successfully disabled=
 [!] You can't remove yourself!=
 [!] Whitelist can't be empty when enabled!=
 Whitelisted players: =
+
+# commands.lua
+Whitelist commands. <player> is only needed for 'add' and 'remove'=
+player=
 
 #player_manager.lua
 You're not whitelisted!=
